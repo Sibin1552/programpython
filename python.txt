@@ -1,0 +1,34 @@
+print("Welcome to the grocery store!\n")
+
+products={
+    "apple":40,
+    "banana":30,
+    "carrot":25,
+    "tomato":35
+}
+
+print("Available Items:")
+for item ,price in products.items():
+    print(f"{item.capitalize()}-₹{price} per Kg")
+
+cart={}
+
+while True:
+    item = input("\n Enter item (or 'done' to finish):").lower()
+
+    if item == "done":
+        break
+    if item in products:
+        qty = int(input("Enter quantity (kg):"))
+        cart[item] = qty
+    else:
+            print("item not available.")
+total= sum(products[i] * cart[i]for i in cart)
+
+if total >500:
+    total *=0.9
+    print("\n10% discount applied!")
+    
+
+print(f"\n Total Amount:₹{total:.2f}")
+print("Thanks you for buying in our store!")
